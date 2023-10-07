@@ -5,5 +5,5 @@ public enum Rarities
     Rare,
     Epic,
     Mystical,
-    Lengendary,
+    Legendary,
 }

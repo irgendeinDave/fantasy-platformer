@@ -9,6 +9,9 @@ public class Player : MonoBehaviour
     [SerializeField] private float JumpForce = 50f;
     private Rigidbody2D rb;
 
+    [SerializeField] private GameObject feet;
+    
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -24,12 +27,11 @@ public class Player : MonoBehaviour
             rb.AddForce(Vector2.right * (MoveForce * Input.GetAxis("Horizontal")));
             // show animation
         }
-
-        if (Input.GetKeyDown(KeyCode.Space))
+        
+        if (Input.GetKeyDown(KeyCode.Space) && feet.GetComponent<FeetCollsion>().IsTouchingGround)
         {
             rb.AddForce(Vector2.up * JumpForce);
             // show animation
         }
-        
     }
 }
