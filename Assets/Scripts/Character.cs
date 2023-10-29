@@ -5,13 +5,13 @@ using UnityEngine;
 /// </summary>
 public abstract class Character : MonoBehaviour
 {
-    public int Health { get; protected set; }
-    public int JumpForce { get; protected set; }
-    public int MoveForce { get; protected set; }
-    public int MaxMoveSpeed { get; protected set; }
+    private int Health { get;  set; } = 100;
+    protected int JumpForce { get; set; } = 450;
+    protected int MoveForce { get; set; } = 25;
+    protected int MaxMoveSpeed { get; set; } = 10;
 
     protected Rigidbody2D _rb;
-    [SerializeField] private GameObject feet;
+    [SerializeField] protected GameObject feet;
 
     public void Awake()
     {
@@ -21,10 +21,10 @@ public abstract class Character : MonoBehaviour
     public void Update()
     {
         Move();
-        if (Input.GetKeyDown(KeyCode.Space) && feet.GetComponent<FeetCollsion>().IsTouchingGround)
-        {
-            Jump();
-        }
+        Jump();
+        
+        if (Health <= 0)
+            Die();
     }
 
     protected abstract void Attack();

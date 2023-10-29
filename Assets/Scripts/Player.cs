@@ -3,12 +3,6 @@ using UnityEngine;
 
 public class Player : Character
 {
-    [SerializeField] private float MoveForce = 10f;
-    [SerializeField] private float MaxMoveSpeed = 15f;
-    
-    [SerializeField] private float JumpForce = 50f;
-    private Rigidbody2D rb;
-
     protected override void Move()
     {
         _rb.angularVelocity = 0;
@@ -28,8 +22,11 @@ public class Player : Character
 
     protected override void Jump()
     {
-        _rb.AddForce(Vector2.up * JumpForce);
-        // show animation
+        if (Input.GetKeyDown(KeyCode.Space) && feet.GetComponent<FeetCollsion>().IsTouchingGround)
+        {
+            _rb.AddForce(Vector2.up * JumpForce);
+            // show animation
+        }
     }
     
 }
