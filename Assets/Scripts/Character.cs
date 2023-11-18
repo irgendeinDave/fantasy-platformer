@@ -30,6 +30,9 @@ public abstract class Character : MonoBehaviour
         
         if (Health <= 0)
             Die();
+        
+        if (transform.position.y < -25)
+            Die();
     }
 
     protected abstract void Attack();

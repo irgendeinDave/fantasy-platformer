@@ -28,5 +28,9 @@ public class Player : Character
             // show animation
         }
     }
-    
+
+    protected void OnTriggerEnter(Collider other)
+    {   
+        transform.rotation = Quaternion.identity;
+    }
 }

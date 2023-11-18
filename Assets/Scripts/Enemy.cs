@@ -12,6 +12,8 @@ public class Enemy : Character
 
     protected override void Move()
     {
+        if (player == null) return;
+        
         int direction = 0; // -1 to move left; 1 to move right
 
         // check if player is in Sight using Raycasts and move towards him
@@ -30,7 +32,6 @@ public class Enemy : Character
             _rb.velocity -= _rb.velocity * (breakingForce * Time.deltaTime);
             return;
         }
-            
         
         _rb.angularVelocity = 0;
         
