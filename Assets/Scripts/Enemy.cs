@@ -21,9 +21,14 @@ public class Enemy : Character
         RaycastHit2D hit = Physics2D.Raycast(origin, Vector2.left, sightDistance);
         if (hit.collider != null && hit.collider.gameObject.CompareTag("Player"))
             direction = -1;
-        hit = Physics2D.Raycast(origin, Vector2.right, sightDistance);
-        if (hit.collider != null && hit.collider.gameObject.CompareTag("Player"))
-            direction = 1;
+        else 
+        {
+            hit = Physics2D.Raycast(origin, Vector2.right, sightDistance);
+            if (hit.collider != null && hit.collider.gameObject.CompareTag("Player"))
+                direction = 1;
+            else 
+                _rb.velocity -= _rb.velocity * (breakingForce * Time.deltaTime);
+        }
         
         // slow down the enemy if it gets to close to the player
         float distanceToPlayer = Mathf.Abs(Vector2.Distance(transform.position, player.transform.position));
