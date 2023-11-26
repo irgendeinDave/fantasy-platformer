@@ -5,13 +5,12 @@ public class Player : Character
 {
     protected override void Move()
     {
-        _rb.angularVelocity = 0;
-        
+        // accelerate player if the maximum velocity has not yet been reached
         if ((_rb.velocity.x < MaxMoveSpeed && Input.GetAxis("Horizontal") > 0) || 
             (_rb.velocity.x > -MaxMoveSpeed && Input.GetAxis("Horizontal") < 0))
         {
             _rb.AddForce(Vector2.right * (MoveForce * Input.GetAxis("Horizontal")));
-            // show animation
+            // TODO: show animation
         }
     }
 

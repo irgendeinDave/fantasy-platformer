@@ -28,6 +28,8 @@ public abstract class Character : MonoBehaviour
         Move();
         Jump();
         
+        transform.rotation = Quaternion.identity;
+        
         if (Health <= 0)
             Die();
         

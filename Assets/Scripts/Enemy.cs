@@ -26,7 +26,7 @@ public class Enemy : Character
             hit = Physics2D.Raycast(origin, Vector2.right, sightDistance);
             if (hit.collider != null && hit.collider.gameObject.CompareTag("Player"))
                 direction = 1;
-            else 
+            else // slow down enemy if player is not next to it
                 _rb.velocity -= _rb.velocity * (breakingForce * Time.deltaTime);
         }
         
@@ -38,13 +38,12 @@ public class Enemy : Character
             return;
         }
         
-        _rb.angularVelocity = 0;
-        
+        // accelerate enemy if the maximum velocity has not been reached yet
         if ((_rb.velocity.x < MaxMoveSpeed && direction > 0) || 
             (_rb.velocity.x > -MaxMoveSpeed && direction < 0))
         {
             _rb.AddForce(Vector2.right * (MoveForce * direction));
-            // show animation
+            // TODO: show animation
         }
     }
 }
