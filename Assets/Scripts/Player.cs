@@ -21,15 +21,10 @@ public class Player : Character
 
     protected override void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && feet.GetComponent<FeetCollsion>().IsTouchingGround)
+        if (Input.GetKeyDown(KeyCode.Space) && feet.GetComponent<FeetCollision>().IsTouchingGround)
         {
             _rb.AddForce(Vector2.up * JumpForce);
-            // show animation
+            // TODO: show animation
         }
-    }
-
-    protected void OnTriggerEnter(Collider other)
-    {   
-        transform.rotation = Quaternion.identity;
     }
 }

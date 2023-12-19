@@ -5,6 +5,7 @@ public class Enemy : Character
 {
     [SerializeField] private float sightDistance = 10;
     [SerializeField] private float breakingForce = 100;
+    [SerializeField] private Sprite 
     protected override void Attack()
     {
         

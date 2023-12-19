@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class FeetCollsion : MonoBehaviour
+public class FeetCollision : MonoBehaviour
 {
     public bool IsTouchingGround { get; private set; }
     private BoxCollider2D _feetCollider;
